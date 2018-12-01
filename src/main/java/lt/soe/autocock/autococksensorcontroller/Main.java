@@ -10,7 +10,7 @@ public class Main {
             //  Socket to talk to server
             System.out.println("Connecting to hello world server");
 
-            ZMQ.Socket socket = context.createSocket(SocketType.REQ);
+            ZMQ.Socket socket = context.createSocket(ZMQ.REQ);
             socket.connect("tcp://localhost:5555");
 
             for (int requestNbr = 0; requestNbr != 10; requestNbr++) {
@@ -20,8 +20,7 @@ public class Main {
 
                 byte[] reply = socket.recv(0);
                 System.out.println(
-                        "Received " + new String(reply, ZMQ.CHARSET) + " " +
-                                requestNbr
+                        "Received " + new String(reply, ZMQ.CHARSET) + " " + requestNbr
                 );
             }
         }
